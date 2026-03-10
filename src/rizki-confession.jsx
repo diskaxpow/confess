@@ -253,8 +253,9 @@ export default function App() {
   }, [cursorTrail.length]);
 
   const handleNoHover = () => {
-    const x = Math.random() * 70;
-    const y = Math.random() * 80;
+    // Constrain position to stay within safe viewport area
+    const x = 15 + Math.random() * 70; // 15-85%
+    const y = 20 + Math.random() * 60; // 20-80% - safer range for mobile
     setNoPos({ x, y });
     setNoClicks((n) => n + 1);
   };
@@ -325,7 +326,7 @@ export default function App() {
 
       {/* STAGE 0: INTRO */}
       {stage === 0 && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center overflow-y-auto py-10">
           <div className="mb-4 text-6xl animate-bounce">💌</div>
           <h1
             className="text-5xl md:text-7xl font-bold mb-4"
@@ -368,7 +369,7 @@ export default function App() {
 
       {/* STAGE 1: TEASING */}
       {stage === 1 && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center overflow-y-auto py-10">
           <div className="relative max-w-lg w-full">
             {/* Card */}
             <div
@@ -422,8 +423,8 @@ export default function App() {
 
       {/* STAGE 2: CONFESSION */}
       {stage === 2 && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
-          <div className="max-w-xl w-full">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center overflow-y-auto py-10">
+          <div className="max-w-xl w-full my-auto">
             <div
               className="text-5xl mb-6"
               style={{ animation: "pulse 1s ease infinite" }}
@@ -529,7 +530,7 @@ export default function App() {
 
       {/* STAGE 3: ACCEPTED */}
       {stage === 3 && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center overflow-y-auto py-10">
           <div className="max-w-lg">
             <div
               className="text-7xl mb-6"
